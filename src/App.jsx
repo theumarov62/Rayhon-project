@@ -28,7 +28,7 @@ export default function KassirUI() {
     setActiveTableId(null);
   };
 
-  const innerBorderColor = "#d9d9d9"; // ichki cardlar uchun gray border
+  const innerBorderColor = "#d9d9d9"; 
 
   return (
     <Layout
@@ -36,7 +36,7 @@ export default function KassirUI() {
         width: 1100,
         height: 600,
         margin: "50px auto",
-        border: "2px solid #797979", // eng katta div borderi original qora
+        border: "2px solid #797979", 
         borderRadius: 8,
         overflow: "hidden",
         background: "#ffffff",
