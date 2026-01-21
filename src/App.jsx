@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Layout, Card, List, Button, Typography, Divider } from "antd";
 
 const { Content, Sider } = Layout;
 const { Text } = Typography;
 
-export default function KassirAntDesignUI() {
+export default function KassirUI() {
   const defaultTables = Array.from({ length: 20 }, (_, i) => ({
     id: i + 1,
     name: `Stol ${i + 1}`,
@@ -28,23 +28,30 @@ export default function KassirAntDesignUI() {
     setActiveTableId(null);
   };
 
+  const innerBorderColor = "#d9d9d9"; // ichki cardlar uchun gray border
+
   return (
     <Layout
       style={{
         width: 1100,
         height: 600,
         margin: "50px auto",
-        border: "1px solid #f0f0f0",
+        border: "2px solid #797979", // eng katta div borderi original qora
         borderRadius: 8,
         overflow: "hidden",
         background: "#ffffff",
       }}
     >
-      <Sider width={240} style={{ background: "#f9f9f9", padding: 12 }}>
+      <Sider width={240} style={{ background: "#ffffff", padding: 12 }}>
         <Card
           title="Stollar"
           bordered
-          style={{ height: "100%", overflowY: "auto", background: "#fff" }}
+          style={{
+            height: "100%",
+            overflowY: "auto",
+            background: "#ffffff",
+            borderColor: innerBorderColor,
+          }}
         >
           <List
             dataSource={tables}
@@ -57,10 +64,10 @@ export default function KassirAntDesignUI() {
                     cursor: "pointer",
                     borderRadius: 6,
                     padding: "10px 14px",
-                    background: isActive ? "#e6f7ff" : "#fff",
+                    background: isActive ? "#d9f7be" : "#f6fff0",
                     border: isActive
-                      ? "1px solid #1890ff"
-                      : "1px solid #f0f0f0",
+                      ? `1px solid #52c41a`
+                      : `1px solid ${innerBorderColor}`,
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
@@ -68,12 +75,12 @@ export default function KassirAntDesignUI() {
                   }}
                   onClick={() => setActiveTableId(table.id)}
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.background = "#f5f5f5")
+                    (e.currentTarget.style.background = "#e6ffcc")
                   }
                   onMouseLeave={(e) =>
                     (e.currentTarget.style.background = isActive
-                      ? "#e6f7ff"
-                      : "#fff")
+                      ? "#d9f7be"
+                      : "#f6fff0")
                   }
                 >
                   <Text strong>{table.name}</Text>
@@ -90,7 +97,13 @@ export default function KassirAntDesignUI() {
         <Card
           title={activeTable ? activeTable.name : "Stol tanlang"}
           bordered
-          style={{ flex: 1, display: "flex", flexDirection: "column" }}
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            background: "#ffffff",
+            borderColor: innerBorderColor,
+          }}
         >
           {activeTable && (
             <>
@@ -102,6 +115,13 @@ export default function KassirAntDesignUI() {
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
+                        background: "#ffffff",
+                        borderRadius: 4,
+                        marginBottom: 4,
+                        paddingLeft: "8px",
+                        paddingRight: "8px",
+
+                        border: `1px solid ${innerBorderColor}`,
                       }}
                     >
                       <Text>
@@ -126,7 +146,11 @@ export default function KassirAntDesignUI() {
               <Button
                 type="primary"
                 onClick={handlePaid}
-                style={{ marginTop: 16 }}
+                style={{
+                  marginTop: 16,
+                  backgroundColor: "#52c41a",
+                  borderColor: "#52c41a",
+                }}
                 block
               >
                 To‘landi
@@ -140,7 +164,13 @@ export default function KassirAntDesignUI() {
         <Card
           title="History"
           bordered
-          style={{ height: "100%", overflowY: "auto", background: "#fff" }}
+          style={{
+            height: "100%",
+            overflowY: "auto",
+            background: "#ffffff",
+            borderBottom: "#fff",
+            borderRadius: "0",
+          }}
         >
           <Text type="secondary">History panel keyinchalik ishlatiladi</Text>
         </Card>
